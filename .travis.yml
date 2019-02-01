@@ -1,0 +1,31 @@
+image: nosaygoodbye/fedora29
+test:
+  stage: test
+  script:
+    - git clean -df
+    - cmake -configure class-01-basic-game-dev/01-1-hello-world/
+    - cmake -generate class-01-basic-game-dev/01-1-hello-world/
+    - make
+    - ./01-1-hello-world
+          
+    - git clean -df
+    - mingw64-cmake -configure class-01-basic-game-dev/01-1-hello-world/
+    - mingw64-cmake -generate class-01-basic-game-dev/01-1-hello-world/
+    - mingw64-make
+          
+    - git clean -df
+    - CXX=clang++ cmake -configure class-01-basic-game-dev/01-1-hello-world/
+    - CXX=clang++ cmake -generate class-01-basic-game-dev/01-1-hello-world/
+    - make
+    - ./01-1-hello-world
+
+    - git clean -df
+    - cmake -configure class-01-basic-game-dev/01-2-hello-lib/
+    - cmake -generate class-01-basic-game-dev/01-2-hello-lib/
+    - make
+    - hello_bin/hello-bin
+          
+    - git clean -df
+    - mingw64-cmake -configure class-01-basic-game-dev/01-2-hello-lib/
+    - mingw64-cmake -generate class-01-basic-game-dev/01-2-hello-lib/
+    - mingw64-make
